@@ -1,7 +1,7 @@
 import { useContext, useState,useEffect } from "react"
 import { DataContext } from "../context/DataContext"
 import { useNavigate } from "react-router-dom"
-import SkeletonHome from "./SkeletonHome"
+import SkeletonHome from "../skeleton/SkeletonHome"
 
 export default function Home () {
     const [toast,setToast]=useState(false)

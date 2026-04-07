@@ -1,9 +1,9 @@
 import { Fragment } from "react"
 import NavBar from "./component/NavBar"
 import { Routes,Route } from "react-router-dom"
-import Home from "./component/Home"
-import ProductDetail from "./component/Productdetail"
-import CartPage from "./component/CartPage"
+import Home from "./pages/Home"
+import ProductDetail from "./pages/Productdetail"
+import CartPage from "./pages/CartPage"
 export default function App () {
 
  

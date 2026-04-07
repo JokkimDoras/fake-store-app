@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
-import SkeletonCart from "./SkeletonCart";
+import SkeletonCart from "../skeleton/SkeletonCart";
 
 
 export default function CartPage () {

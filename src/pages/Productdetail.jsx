@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
-import SkeletonDetail from "./SkeletonDetail";
+import SkeletonDetail from "../skeleton/SkeletonDetail";
 
 
 export default function ProductDetail() {
