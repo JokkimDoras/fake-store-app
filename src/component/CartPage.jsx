@@ -1,12 +1,29 @@
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
+import SkeletonCart from "./SkeletonCart";
 
 
 export default function CartPage () {
+    const [loading, setLoading] = useState(true) 
+
     const { cart,removeFromCart } = useContext(DataContext);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 500) 
+    
+        return () => clearTimeout(timer)
+    }, [])
+
+    if(loading){
+        return <SkeletonCart/>
+    }
+
 
 if(cart.length === 0) return (
     <div className="empty-cart">

@@ -1,15 +1,29 @@
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect,useState } from "react";
+import SkeletonDetail from "./SkeletonDetail";
+
 
 export default function ProductDetail() {
+    const [loading, setLoading] = useState(true) 
     const { data, addToCart, cart } = useContext(DataContext);
     const { id } = useParams();
     const navigate = useNavigate();
 
+
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 500) 
+    
+        return () => clearTimeout(timer)
+    }, [])
+
     const product = data.find(item => item.id === Number(id))
 
-    if (!product) return <h2>Loading...</h2>
+    if (loading) return <SkeletonDetail/>
 
     return (
         <div className="detail-container">         

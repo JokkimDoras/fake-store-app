@@ -1,10 +1,12 @@
-import { useContext, useState } from "react"
+import { useContext, useState,useEffect } from "react"
 import { DataContext } from "../context/DataContext"
 import { useNavigate } from "react-router-dom"
+import SkeletonHome from "./SkeletonHome"
 
 export default function Home () {
     const [toast,setToast]=useState(false)
     const {data,addToCart,cart} = useContext(DataContext)
+    const [loading, setLoading] = useState(true) 
 
 
     console.log(cart)
@@ -14,8 +16,19 @@ export default function Home () {
     setTimeout(() => setToast(false),2000)
    }
 
+
+   useEffect(() => {
+    const timer = setTimeout(() => {
+        setLoading(false)
+    }, 500) 
+
+    return () => clearTimeout(timer)
+}, [])
 const navigate = useNavigate();
 
+if(loading){
+    return <SkeletonHome/>
+}
     
     const renderedStuff = data.map((det) => {
         return <div className="header-items" key={det.id}>
