@@ -17,9 +17,15 @@ export default function DataProvider({children}){
 
         setCart([...cart,item])
     }
+    const removeFromCart = (idToDel) => {
+       const updated =  cart.filter((item) => {
+            return item.id !== idToDel
+         })
+         setCart(updated)
+    }
     useEffect(() => {fetchData()},[])
 
-    return <DataContext.Provider value={{data,cart,addToCart}}>
+    return <DataContext.Provider value={{data,cart,addToCart,removeFromCart}}>
         {children}
     </DataContext.Provider>
 }
