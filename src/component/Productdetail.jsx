@@ -28,7 +28,7 @@ export default function ProductDetail() {
                     <button
                         className={cart.find(i => i.id === product.id) ? "add-btn added" : "add-btn"}
                         disabled={cart.find(i => i.id === product.id)}
-                        onClick={() => addToCart(product)}   // ✅ wired up
+                        onClick={() => addToCart(product)}   
                     >
                         {cart.find(i => i.id === product.id) ? "✅ Added" : "Add to Cart"}
                     </button>

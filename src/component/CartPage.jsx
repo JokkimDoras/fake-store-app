@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function CartPage () {
-    const { cart } = useContext(DataContext);
+    const { cart,removeFromCart } = useContext(DataContext);
 
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const renderedCart = cart.map((item) => (
             <h4>{item.title}</h4>
             <p className="price">${item.price}</p>
         </div>
-        <button onClick={() => removeFromCart(item.id)}>Remove</button>
+        <button onClick={() => removeFromCart(item.id)} className="remove-btn">Remove</button>
     </div>
 ))
 const total = cart.reduce((acc, item) => acc + item.price, 0)
@@ -31,7 +31,7 @@ return (
         <h2>Your Cart ({cart.length})</h2>
         {renderedCart}
         <div className="cart-total">
-            <h3>Total: ${total.ToFixed(2)}</h3>
+            <h3>Total: ${total.toFixed(2)}</h3>
             <button className="add-btn">Checkout</button>
         </div>
     </div>
