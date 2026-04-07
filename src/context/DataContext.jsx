@@ -4,15 +4,22 @@ export const DataContext = createContext();
 
 export default function DataProvider({children}){
     const [data,setData]=useState([]);
+    const [ cart,setCart ] = useState([]);
 
     const fetchData = async () => {
         const res = await fetch('https://fakestoreapi.com/products')
         const details = await res.json()
         setData(details)
     }
+    const addToCart = (item) => {
+        const exists = cart.find(i => i.id === item.id)
+        if(exists) return
+
+        setCart([...cart,item])
+    }
     useEffect(() => {fetchData()},[])
 
-    return <DataContext.Provider value={{data}}>
+    return <DataContext.Provider value={{data,cart,addToCart}}>
         {children}
     </DataContext.Provider>
 }

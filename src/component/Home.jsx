@@ -1,10 +1,18 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DataContext } from "../context/DataContext"
 
 export default function Home () {
-    const {data} = useContext(DataContext)
-    console.log(data)
-   
+    const [toast,setToast]=useState(false)
+    const {data,addToCart,cart} = useContext(DataContext)
+
+    console.log(cart)
+   const handleClick = (det) => {
+    addToCart(det);
+    setToast(true)
+    setTimeout(() => setToast(false),2000)
+   }
+
+
 
     
     const renderedStuff = data.map((det) => {
@@ -17,14 +25,25 @@ export default function Home () {
             </div>
 
             <h4>{det.title}</h4>
+            <p className="price"> ${det.price}</p>
+            <button onClick={() => handleClick(det)} className="add-btn">Add to Cart</button>
 
 </div>
         </div>
     })
 
     return (
-        <div className="for-flex">
+        <>
+
+{toast && (
+<div className="toast">
+✅ Successfully added to cart!
+</div>
+)}      
+  <div className="for-flex">
+          
             {renderedStuff}
         </div>
+            </>
     )
 }
