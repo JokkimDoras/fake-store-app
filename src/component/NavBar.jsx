@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 export default function NavBar() {
     const navigate = useNavigate()
     return (
-        <div className="nav-header">
-            NavBar
+        <div  className="nav-header">
+            <div onClick={() => navigate(`/`)}>
+            Home
+            </div>
             <div>
                 <FaCartShopping onClick={() => navigate('/cart')}/>
                 </div>

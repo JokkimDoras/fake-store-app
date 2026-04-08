@@ -30,6 +30,7 @@ if(loading){
 }
     
     const renderedStuff = data.map((det) => {
+        const isInCart = cart.find(item => item.id === det.id)
         return <div className="header-items" key={det.id}>
 
 <div className="items-stuff">
@@ -40,7 +41,7 @@ if(loading){
 
             <h4 onClick={() => navigate(`/product/${det.id}`)}>{det.title}</h4>
             <p className="price"> ${det.price}</p>
-            <button onClick={() => handleClick(det)} className="add-btn">Add to Cart</button>
+            <button onClick={() => handleClick(det)} className="add-btn">{isInCart? "✅ Added" : "Add to Cart"}</button>
 
 </div>
         </div>
