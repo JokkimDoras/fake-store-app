@@ -9,7 +9,6 @@ export default function Home () {
     const [loading, setLoading] = useState(true) 
 
 
-    console.log(cart)
    const handleClick = (det) => {
     addToCart(det);
     setToast(true)

@@ -25,6 +25,7 @@ export default function CartPage () {
     }
 
 
+
 if(cart.length === 0) return (
     <div className="empty-cart">
         <h2>Your Cart is Empty! 🛒</h2>
@@ -32,7 +33,7 @@ if(cart.length === 0) return (
     </div>
 )
 const renderedCart = cart.map((item) => (
-    <div className="cart-items" key={item.id}>
+    <div onClick={() => navigate(`/product/${item.id}`)} className="cart-items" key={item.id}>
         <img src={item.image}/>
         <div className="cart-item-details">
             <h4>{item.title}</h4>
