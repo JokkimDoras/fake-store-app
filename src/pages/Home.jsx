@@ -5,7 +5,7 @@ import SkeletonHome from "../skeleton/SkeletonHome"
 
 export default function Home () {
     const [toast,setToast]=useState(false)
-    const {data,addToCart,cart} = useContext(DataContext)
+    const {data,addToCart,cart,term} = useContext(DataContext)
     const [loading, setLoading] = useState(true) 
 
 
@@ -15,6 +15,7 @@ export default function Home () {
     setTimeout(() => setToast(false),2000)
    }
 
+   const filtered = term ? data.filter(item => item.title.toLowerCase().includes(term.toLowerCase())):data
 
    useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,7 +30,7 @@ if(loading){
     return <SkeletonHome/>
 }
     
-    const renderedStuff = data.map((det) => {
+    const renderedStuff = filtered.map((det) => {
         const isInCart = cart.find(item => item.id === det.id)
         return <div className="header-items" key={det.id}>
 

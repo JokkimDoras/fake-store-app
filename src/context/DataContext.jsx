@@ -5,6 +5,7 @@ export const DataContext = createContext();
 export default function DataProvider({children}){
     const [data,setData]=useState([]);
     const [ cart,setCart ] = useState([]);
+    const[term,setTerm] = useState('');
 
     const fetchData = async () => {
         const res = await fetch('https://fakestoreapi.com/products')
@@ -25,7 +26,7 @@ export default function DataProvider({children}){
     }
     useEffect(() => {fetchData()},[])
 
-    return <DataContext.Provider value={{data,cart,addToCart,removeFromCart}}>
+    return <DataContext.Provider value={{data,cart,addToCart,removeFromCart,term,setTerm}}>
         {children}
     </DataContext.Provider>
 }
