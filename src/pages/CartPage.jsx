@@ -33,9 +33,9 @@ if(cart.length === 0) return (
     </div>
 )
 const renderedCart = cart.map((item) => (
-    <div onClick={() => navigate(`/product/${item.id}`)} className="cart-items" key={item.id}>
-        <img src={item.image}/>
-        <div className="cart-item-details">
+    <div  className="cart-items" key={item.id}>
+        <img onClick={() => navigate(`/product/${item.id}`)} src={item.image}/>
+        <div onClick={() => navigate(`/product/${item.id}`)} className="cart-item-details">
             <h4>{item.title}</h4>
             <p className="price">${item.price}</p>
         </div>
