@@ -24,6 +24,13 @@ export default function CartPage () {
         return <SkeletonCart/>
     }
 
+    const handleClick = (id,e) => {
+      if(e.ctrlKey || e.altKey){
+        window.open(`http://localhost:5173/product/${id}`, '_blank')      }else{
+        navigate(`/product/${id}`)
+      }
+       
+    }
 
 
 if(cart.length === 0) return (
@@ -34,8 +41,8 @@ if(cart.length === 0) return (
 )
 const renderedCart = cart.map((item) => (
     <div  className="cart-items" key={item.id}>
-        <img onClick={() => navigate(`/product/${item.id}`)} src={item.image}/>
-        <div onClick={() => navigate(`/product/${item.id}`)} className="cart-item-details">
+        <img onClick={(e) => handleClick(item.id,e)} src={item.image}/>
+        <div onClick={(e) => handleClick(item.id,e)} className="cart-item-details">
             <h4>{item.title}</h4>
             <p className="price">${item.price}</p>
         </div>
