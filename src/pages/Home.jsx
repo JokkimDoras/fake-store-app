@@ -5,7 +5,7 @@ import SkeletonHome from "../skeleton/SkeletonHome"
 
 export default function Home () {
     const [toast,setToast]=useState(false)
-    const {data,addToCart,cart,term} = useContext(DataContext)
+    const {data,addToCart,cart,term,error} = useContext(DataContext)
     const [loading, setLoading] = useState(true) 
 
 
@@ -51,7 +51,7 @@ if(loading){
     return (
         <>
 
-{toast && (
+{error? (<h1 className="for-error"><span>🙄</span>Opps! Something went Wrong!!</h1>):toast && (
 <div className="toast">
 ✅ Successfully added to cart!
 </div>

@@ -331,3 +331,10 @@ body{
     font-size: 16px;
     pointer-events: none; /* ✅ click goes through icon to input */
 }
+
+.for-error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+}
