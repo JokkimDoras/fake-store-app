@@ -51,7 +51,7 @@ if(loading){
     return (
         <>
 
-{error? (<h1 className="for-error"><span>🙄</span>Opps! Something went Wrong!!</h1>):toast && (
+{error? (<h1 className="for-error"><span>🙄</span>Oops! Something went Wrong!!</h1>):toast && (
 <div className="toast">
 ✅ Successfully added to cart!
 </div>
